@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King of Fruits - Premium Durian Delivery Singapore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: #ffd700;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%),
+                        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ffd700, #ff6b35);
+            color: #1a1a2e;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .section {
+            padding: 5rem 0;
+            margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-image.musang-king {
+            background: linear-gradient(135deg, #8B4513 0%, #D2B48C 30%, #FFD700 70%, #FFA500 100%);
+        }
+
+        .product-image.d24-sultan {
+            background: linear-gradient(135deg, #654321 0%, #DEB887 30%, #F4A460 70%, #DAA520 100%);
+        }
+
+        .product-image.black-thorn {
+            background: linear-gradient(135deg, #2F4F4F 0%, #696969 30%, #4B0082 70%, #8B008B 100%);
+        }
+
+        .product-image.xo-durian {
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 30%, #FFD700 70%, #FF8C00 100%);
+        }
+
+        .product-image.red-prawn {
+            background: linear-gradient(135deg, #8B4513 0%, #CD853F 30%, #FF6347 70%, #FF4500 100%);
+        }
+
+        .product-image.golden-phoenix {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 30%, #FF8C00 70%, #FF6B35 100%);
+        }
+
+        .product-image::before {
+            content: '🥥';
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.4;
+            animation: float 3s ease-in-out infinite;
+            filter: sepia(1) hue-rotate(45deg);
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,215,0,0.2));
+            border-radius: 15px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .product-description {
+            color: #cccccc;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ffd700, #ff6b35);
+            color: #1a1a2e;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 215, 0, 0.3);
+            transition: right 0.3s ease;
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-total {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ffd700, #ff6b35);
+            color: #1a1a2e;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.02);
+            margin: 3rem 0;
+            padding: 3rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">👑 King of Fruits</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Premium Durian Delivery</h1>
+            <p>Fresh from Malaysia • Delivered to Your Doorstep in Singapore</p>
+            <button class="cta-button" onclick="document.getElementById('products').scrollIntoView()">
+                Shop Now
+            </button>
+        </div>
+    </section>
+
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Premium Selection</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image musang-king"><img src="C:\Users\Volyana\Downloads\random images\durian.jpg"></div>
+                    <h3 class="product-title">Musang King</h3>
+                    <p class="product-description">The king of all durians! Rich, creamy texture with bittersweet taste. Premium grade A quality.</p>
+                    <div class="product-price">S$45/kg</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Musang King', 45)">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image d24-sultan"></div>
+                    <h3 class="product-title">D24 Sultan</h3>
+                    <p class="product-description">Sweet and creamy with a hint of bitterness. Perfect for durian newcomers.</p>
+                    <div class="product-price">S$35/kg</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('D24 Sultan', 35)">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image black-thorn"></div>
+                    <h3 class="product-title">Black Thorn</h3>
+                    <p class="product-description">Rare premium variety with intense flavor and smooth, custard-like texture.</p>
+                    <div class="product-price">S$60/kg</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Black Thorn', 60)">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image xo-durian"></div>
+                    <h3 class="product-title">XO Durian</h3>
+                    <p class="product-description">Sweet with a slight alcoholic aftertaste. Creamy and absolutely delicious.</p>
+                    <div class="product-price">S$50/kg</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('XO Durian', 50)">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image red-prawn"></div>
+                    <h3 class="product-title">Red Prawn</h3>
+                    <p class="product-description">Distinctive orange-red flesh with sweet, aromatic flavor. A true delicacy.</p>
+                    <div class="product-price">S$55/kg</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Red Prawn', 55)">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image golden-phoenix"></div>
+                    <h3 class="product-title">Golden Phoenix</h3>
+                    <p class="product-description">Premium golden flesh with complex sweet and bitter notes. Limited availability.</p>
+                    <div class="product-price">S$65/kg</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Golden Phoenix', 65)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Same Day Delivery</h3>
+                    <p>Fresh durians delivered within 2-4 hours across Singapore</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>Premium Quality</h3>
+                    <p>Hand-picked from the best orchards in Malaysia</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❄️</div>
+                    <h3>Temperature Controlled</h3>
+                    <p>Maintained at optimal freshness during transport</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💯</div>
+                    <h3>Satisfaction Guarantee</h3>
+                    <p>100% money-back guarantee if not satisfied</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="cart-total">
+            <h3>Total: S$<span id="cartTotal">0.00</span></h3>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 King of Fruits Singapore. Premium durian delivery service.</p>
+            <p>📞 +65 9123 4567 | 📧 hello@kingoffruits.sg</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let isCartOpen = false;
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            
+            updateCartDisplay();
+            
+            // Add visual feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Added! ✓';
+            button.style.background = 'linear-gradient(45deg, #2ecc71, #27ae60)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(45deg, #ffd700, #ff6b35)';
+            }, 1000);
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartDisplay();
+        }
+
+        function updateQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(name);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = totalPrice.toFixed(2);
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div>
+                        <div style="font-weight: bold; color: #ffd700;">${item.name}</div>
+                        <div style="color: #cccccc;">S$${item.price}/kg</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <button onclick="updateQuantity('${item.name}', -1)" style="background: #ff4757; border: none; color: white; padding: 5px 8px; border-radius: 5px; cursor: pointer;">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="updateQuantity('${item.name}', 1)" style="background: #2ecc71; border: none; color: white; padding: 5px 8px; border-radius: 5px; cursor: pointer;">+</button>
+                        <button onclick="removeFromCart('${item.name}')" style="background: transparent; border: none; color: #ff4757; cursor: pointer; margin-left: 10px;">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cartSidebar');
+            isCartOpen = !isCartOpen;
+            cartSidebar.classList.toggle('open', isCartOpen);
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderSummary = cart.map(item => `${item.name} x${item.quantity}`).join(', ');
+            
+            alert(`Thank you for your order!\n\nItems: ${orderSummary}\nTotal: S$${total.toFixed(2)}\n\nWe'll deliver your fresh durians within 2-4 hours!`);
+            
+            cart = [];
+            updateCartDisplay();
+            toggleCart();
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.8)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.2)';
+            }
+        });
+
+        // Close cart when clicking outside
+        document.addEventListener('click', (e) => {
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartIcon = document.querySelector('.cart-icon');
+            
+            if (isCartOpen && !cartSidebar.contains(e.target) && !cartIcon.contains(e.target)) {
+                toggleCart();
+            }
+        });
+    </script>
+</body>
+</html>
